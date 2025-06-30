@@ -28,6 +28,26 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
 <style>
+    #mobile-blocker {
+    display: none;
+    text-align: center;
+    padding: 50px;
+    font-family: sans-serif;
+  }
+
+  @media screen and (max-width: 991px) {
+    body {
+      overflow: hidden;
+    }
+
+    #main-content {
+      display: none !important;
+    }
+
+    #mobile-blocker {
+      display: block !important;
+    }
+  }
 #cert {
   width: 90%;
   height: 40%;
