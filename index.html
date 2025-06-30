@@ -29,22 +29,22 @@
    
 <style>
   
+ #mobile-blocker {
+  display: none;
+  text-align: center;
+  padding: 50px;
+  font-family: sans-serif;
+}
+
+@media (max-width: 991px) {
+  #main-content {
+    display: none !important;
+  }
   #mobile-blocker {
-    display: none;
-    text-align: center;
-    padding: 50px;
-    font-family: sans-serif;
+    display: block;
   }
+}
 
-  @media (max-width: 991px) {
-    body > *:not(#mobile-blocker) {
-      display: none !important;
-    }
-
-    #mobile-blocker {
-      display: block;
-    }
-  }
 
 
 
@@ -103,10 +103,13 @@
          </head>
    
     <body data-spy="scroll" data-target=".navbar" data-offset="51">
-         <div id="mobile-blocker">
+        <div id="mobile-blocker">
   <h2>⚠️ Desktop Only</h2>
   <p>This site is best viewed on a desktop or laptop. Please visit on a larger screen.</p>
 </div>
+
+<div id="main-content">
+
         <div class="wrapper">
             <div class="sidebar">
                 <div class="sidebar-header">
@@ -620,6 +623,8 @@
                 <!-- Footer Start -->
             </div>
         </div>
+    </div> <!-- end of #main-content -->
+
         
         <!-- Back to Top -->
         <a href="#" class="back-to-top"><i class="fa fa-angle-double-up"></i></a>
