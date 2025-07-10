@@ -508,13 +508,14 @@
         
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
+        <div id="mobile-warning" style="display: none; background: #ffc; padding: 10px; text-align: center;">
+  📢 For the best experience, please use desktop view!
+</div>
     </body>
-    <script>
-  window.onload = function () {
-    if (window.innerWidth < 768) {
-      alert("For the best experience, please view this site on a desktop browser.");
-    }
-  };
+   <script>
+  if (window.innerWidth < 768) {
+    document.getElementById("mobile-warning").style.display = "block";
+  }
 </script>
 
 </html>
