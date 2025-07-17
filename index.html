@@ -32,7 +32,15 @@
          </head>
    
     <body data-spy="scroll" data-target=".navbar" data-offset="51">
-       
+       <!-- Mobile Alert Box -->
+<div id="mobile-alert" style="display:none; position: fixed; bottom: 20px; left: 20px; right: 20px; padding: 15px; background: #fff4e5; border: 1px solid #ffa726; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); z-index: 1000;">
+  <p style="margin: 0 0 10px;"><strong>📢 Tip:</strong> For the best experience, view this site on a desktop or switch to desktop mode.</p>
+  <label style="font-size: 14px;">
+    <input type="checkbox" id="dont-show-again"> Don’t show again
+  </label>
+  <button onclick="closeAlert()" style="float: right; background: #ffa726; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">OK</button>
+</div>
+
 
         <div class="wrapper">
             <div class="sidebar">
@@ -506,12 +514,25 @@
         
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
-        <script>
-  // Check if the screen width is less than or equal to 768px (typical for mobile)
-  if (window.innerWidth <= 768) {
-    alert("📢 For the best experience, please view this site on a desktop or enable desktop site mode in your browser.");
+       <script>
+  function isMobile() {
+    return window.innerWidth <= 768;
   }
+
+  function closeAlert() {
+    if (document.getElementById("dont-show-again").checked) {
+      localStorage.setItem("hideMobileAlert", "true");
+    }
+    document.getElementById("mobile-alert").style.display = "none";
+  }
+
+  window.onload = function () {
+    if (isMobile() && !localStorage.getItem("hideMobileAlert")) {
+      document.getElementById("mobile-alert").style.display = "block";
+    }
+  };
 </script>
+
 
     </body>
 </html>
