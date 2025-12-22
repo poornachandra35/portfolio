@@ -6,8 +6,7 @@ Welcome to my personal portfolio repository! This project showcases my skills, p
 
 This portfolio website serves as an online resume and project showcase. It highlights my educational background, technical skills, projects, internships, and extracurricular activities.
 
-Live Demo: [Click Here](https://your-portfolio-link.com)  
-(Replace with your actual deployed URL)
+Live Demo: [Click Here](https://poornachandra35.github.io/portfolio/)  
 
 ---
 
