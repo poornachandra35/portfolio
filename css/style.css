@@ -2,6 +2,22 @@
 /********** General CSS ***********/
 /**********************************/
 
+
+/* Show overlay ONLY on devices that support hover */
+@media (hover: hover) and (pointer: fine) {
+    .cert-wrapper:hover .cert-overlay {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+/* Prevent accidental hover behavior on touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .skill-item:hover {
+        background-color: transparent;
+    }
+}
+
 .skill-hint {
     display: none;
     margin-bottom: 10px;
