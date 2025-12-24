@@ -529,7 +529,7 @@ a:focus {
     }
 
     .header .typed-text {
-        display: block;
+        display: none;
         font-size: 16px;
         margin-top: 8px;
     }
