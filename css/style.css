@@ -539,8 +539,9 @@ a:focus {
         content: "";
         display: block;
         margin: 20px auto 0;
-        width: 350px;
-        height: 500px;
+        width: 80%;
+        max-width: 320px;
+        aspect-ratio: 3 / 4;
         background: url(../img/profile1.png) center no-repeat;
         background-size: contain;
         border-radius: 12px;
