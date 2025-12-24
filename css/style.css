@@ -457,8 +457,9 @@ a:focus {
 }
 
 .header .typed-text {
-    display: none;
+    display: inline-block;
 }
+
 
 .header .typed-cursor {
     font-size: 25px;
@@ -540,13 +541,18 @@ a:focus {
     .header::after {
         content: "";
         display: block;
-        width: 220px;
-        height: 220px;
+        width: 350px;
+        height: 350px;
         margin: 0 auto 20px;       /* pushes image DOWN */
         background: url(../img/profile1.png) center no-repeat;
         background-size: contain;
     }
 }
+/* Remove typed.js cursor */
+.typed-cursor {
+    display: none !important;
+}
+
 
 
 /**********************************/
