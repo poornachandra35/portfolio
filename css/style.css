@@ -516,34 +516,35 @@ a:focus {
     }
 
     .header .content-inner {
-        background: none;                /* remove bg image */
-        padding: 70px 20px 30px;
-    }
-
-    .header h1 {
-        font-size: 34px;
+        background: none;          /* remove bg image */
+        padding: 60px 20px 0;      /* remove bottom padding */
     }
 
     .header p {
         font-size: 18px;
     }
 
+    .header h1 {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+
     .header .typed-text {
         display: block;
         font-size: 16px;
-        margin-top: 8px;
+        margin-top: 10px;
+        margin-bottom: 20px;       /* IMPORTANT spacing */
     }
 
-    /* Image below text */
+    /* Separate image container */
     .header::after {
         content: "";
         display: block;
-        margin: 20px auto 0;
         width: 220px;
         height: 220px;
+        margin: 0 auto 20px;       /* pushes image DOWN */
         background: url(../img/profile1.png) center no-repeat;
         background-size: contain;
-        border-radius: 12px;
     }
 }
 
