@@ -535,13 +535,12 @@ a:focus {
     }
 
     /* Image below text */
-    .header::after {
+   .header::after {
         content: "";
         display: block;
         margin: 20px auto 0;
-        width: 80%;
-        max-width: 320px;
-        aspect-ratio: 3 / 4;
+        width: 220px;
+        height: 220px;
         background: url(../img/profile1.png) center no-repeat;
         background-size: contain;
         border-radius: 12px;
