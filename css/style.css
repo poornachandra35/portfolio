@@ -1,6 +1,56 @@
 /**********************************/
 /********** General CSS ***********/
 /**********************************/
+
+.skill-hint {
+    display: none;
+    margin-bottom: 10px;
+    transition: opacity 0.5s ease;
+}
+
+.expand-indicator {
+    margin-left: 6px;
+    font-weight: bold;
+    opacity: 0.6;
+    transition: transform 0.3s ease;
+}
+
+.skill-item:hover .expand-indicator {
+    opacity: 1;
+}
+
+.skill-item {
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.skill-item:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.skill-item {
+    cursor: pointer;
+}
+
+.skill-details {
+    display: none;
+    margin-top: 10px;
+    padding-left: 15px;
+    font-size: 14px;
+    color: #555;
+}
+
+.skill-details ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.skill-details li {
+    margin-bottom: 5px;
+}
+
 html {
     scroll-behavior: smooth;
 }
