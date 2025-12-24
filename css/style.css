@@ -529,7 +529,7 @@ a:focus {
     }
 
     .header .typed-text {
-        display: block;
+        display: none;
         font-size: 16px;
         margin-top: 8px;
     }
@@ -541,7 +541,7 @@ a:focus {
         margin: 20px auto 0;
         width: 220px;
         height: 220px;
-        background: url(../img/profile1.png) center no-repeat;
+        background: url(../img/profile2.png) center no-repeat;
         background-size: contain;
         border-radius: 12px;
     }
