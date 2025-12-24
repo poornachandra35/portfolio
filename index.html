@@ -108,7 +108,8 @@
                     <p>I'm</p>
                     <h1>Poornachandra S K</h1>
                     <h2></h2>
-                    <div class="typed-text"> </div>
+                    <div class="typed-text"> MCA Student, Full-Stack Developer, Python Backend Developer, FastAPI &
+                        React Developer, Cloud & AI Enthusiast</div>
                 </div>
             </div>
             <!-- Header End -->
@@ -804,7 +805,7 @@
                         <div class="col-md-6">
                             <div class="form">
                                 <form id="contactForm">
-                                   
+                                    <form id="contactForm">
 
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
@@ -848,58 +849,6 @@
 
     <!-- Back to Top -->
     <a href="#" class="back-to-top"><i class="fa fa-angle-double-up"></i></a>
-    <!-- JavaScript Libraries -->
-   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-
-<script src="lib/typed/typed.min.js"></script> <!-- MUST be before init -->
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const el = document.querySelector(".typed-text");
-    if (!el) return;
-
-    new Typed(el, {
-        strings: [
-            "MCA Student",
-            "Full-Stack Developer",
-            "Python Backend Developer",
-            "FastAPI & React Developer",
-            "Cloud & AI Enthusiast"
-        ],
-        typeSpeed: 60,
-        backSpeed: 30,
-        backDelay: 1500,
-        loop: true,
-        smartBackspace: true
-    });
-});
-</script>
-
-    <script src="lib/slick/slick.min.js"></script>
-    <script src="lib/typed/typed.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
-    <script>
-function toggleDetails(id) {
-    const details = document.getElementById(id);
-
-    if (!details) return;
-
-    const isOpen = details.style.display === "block";
-
-    // Close all skill details first (accordion behavior)
-    document.querySelectorAll('.skill-details').forEach(item => {
-        item.style.display = "none";
-    });
-
-    // Toggle selected one
-    details.style.display = isOpen ? "none" : "block";
-}
-</script>
-
-
     <script>
         document.querySelectorAll('a[href="#contact"]').forEach(btn => {
             btn.addEventListener('click', function () {
@@ -956,9 +905,34 @@ function toggleDetails(id) {
         });
     </script>
 
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/slick/slick.min.js"></script>
+    <script src="lib/typed/typed.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script>
+function toggleDetails(id) {
+    const details = document.getElementById(id);
+
+    if (!details) return;
+
+    const isOpen = details.style.display === "block";
+
+    // Close all skill details first (accordion behavior)
+    document.querySelectorAll('.skill-details').forEach(item => {
+        item.style.display = "none";
+    });
+
+    // Toggle selected one
+    details.style.display = isOpen ? "none" : "block";
+}
+</script>
 
 
-    
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
