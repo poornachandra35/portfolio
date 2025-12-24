@@ -535,7 +535,7 @@ a:focus {
     }
 
     /* Image below text */
-    .header::after {
+   .header::after {
         content: "";
         display: block;
         margin: 20px auto 0;
