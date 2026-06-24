@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <title>Poornachandra | Portfolio</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta name="description" content="Portfolio of Poornachandra – Web Developer, Python Programmer, and MCA Student.">
-    <meta name="keywords" content="Poornachandra s k, Portfolio, GitHub, Web Developer, MCA, Python Projects">
-    <meta name="author" content="Poornachandra">
-    <meta name="google-site-verification" content="dI1PX_oL6su5VztjRZqwFwJa1XTlW0UBUefALerCfgA" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Poornachandra S K — Java Backend Engineer</title>
+  <meta name="description" content="Portfolio of Poornachandra S K — MCA candidate, Java Backend Engineer specialising in Spring Boot, Microservices, and Cloud-Native Applications." />
+   <meta name="keywords" content="Poornachandra s k, Portfolio, GitHub, Web Developer, MCA, Python Projects">
+  <meta name="author" content="Poornachandra S K" />
+  <meta name="google-site-verification" content="dI1PX_oL6su5VztjRZqwFwJa1XTlW0UBUefALerCfgA" />
 
-    <script type="application/ld+json">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+  <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -36,913 +38,1517 @@
 
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
+  <style>
+    /* ── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --bg:        #090e1a;
+      --bg2:       #0d1526;
+      --bg3:       #111d35;
+      --surface:   rgba(255,255,255,0.04);
+      --border:    rgba(255,255,255,0.08);
+      --cyan:      #00d4ff;
+      --cyan-dim:  rgba(0,212,255,0.12);
+      --purple:    #7c3aed;
+      --purple-dim:rgba(124,58,237,0.15);
+      --green:     #10b981;
+      --text:      #e8edf8;
+      --muted:     #7a8ba8;
+      --white:     #ffffff;
+      --nav-w:     240px;
+      --font-d:    'Space Grotesk', sans-serif;
+      --font-b:    'Inter', sans-serif;
+      --font-m:    'JetBrains Mono', monospace;
+    }
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:300;400;600;700;800&display=swap" rel="stylesheet">
+    /* ── RESET ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-b);
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    img { max-width: 100%; }
 
-    <!-- CSS Libraries -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    /* ── SCROLLBAR ──────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 99px; }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    /* ── CANVAS BACKGROUND ──────────────────────────────── */
+    #bg-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
 
-    <link href="lib/slick/slick.css" rel="stylesheet">
-    <link href="lib/slick/slick-theme.css" rel="stylesheet">
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    /* ── LAYOUT ─────────────────────────────────────────── */
+    .site-wrapper {
+      display: flex;
+      position: relative;
+      z-index: 1;
+    }
 
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    /* ── SIDE NAV ────────────────────────────────────────── */
+    .sidenav {
+      position: fixed;
+      left: 0; top: 0; bottom: 0;
+      width: var(--nav-w);
+      background: rgba(9,14,26,0.92);
+      backdrop-filter: blur(20px);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      padding: 2.5rem 1.5rem;
+      z-index: 100;
+      transition: transform .3s ease;
+    }
+    .sidenav-brand {
+      margin-bottom: 2.5rem;
+    }
+    .sidenav-brand .name {
+      font-family: var(--font-d);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .sidenav-brand .role {
+      font-family: var(--font-m);
+      font-size: 0.68rem;
+      color: var(--cyan);
+      margin-top: .3rem;
+      display: block;
+    }
+    .sidenav-brand .status-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      margin-top: .6rem;
+      font-size: .7rem;
+      color: var(--green);
+    }
+    .sidenav-brand .status-dot::before {
+      content: '';
+      display: block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse-dot 2s ease infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { box-shadow: 0 0 0 0 rgba(16,185,129,.6); }
+      50%      { box-shadow: 0 0 0 5px rgba(16,185,129,0); }
+    }
+    .nav-links { flex: 1; }
+    .nav-links li { margin-bottom: .2rem; }
+    .nav-links a {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .6rem .75rem;
+      border-radius: 8px;
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: all .2s;
+      position: relative;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--white);
+      background: var(--surface);
+    }
+    .nav-links a.active { color: var(--cyan); background: var(--cyan-dim); }
+    .nav-links .nav-icon {
+      font-size: .9rem;
+      width: 18px;
+      text-align: center;
+    }
+    .sidenav-footer {
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      display: flex;
+      gap: .75rem;
+    }
+    .sidenav-footer a {
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      display: grid; place-items: center;
+      font-size: .8rem;
+      color: var(--muted);
+      transition: all .2s;
+    }
+    .sidenav-footer a:hover { color: var(--cyan); border-color: var(--cyan); }
 
+    /* hamburger */
+    .hamburger {
+      display: none;
+      position: fixed;
+      top: 1rem; left: 1rem;
+      z-index: 200;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      width: 40px; height: 40px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block;
+      width: 20px; height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: .3s;
+    }
+
+    /* ── MAIN CONTENT ────────────────────────────────────── */
+    .main {
+      margin-left: var(--nav-w);
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* ── SECTION SHELL ───────────────────────────────────── */
+    .section {
+      padding: 6rem 4rem;
+      max-width: 900px;
+    }
+    .section-tag {
+      font-family: var(--font-m);
+      font-size: .72rem;
+      color: var(--cyan);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .75rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .section-tag::before {
+      content: '';
+      display: block;
+      width: 24px; height: 1px;
+      background: var(--cyan);
+    }
+    .section-title {
+      font-family: var(--font-d);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: .95rem;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── HERO ────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      align-items:center;
+      gap:3rem;
+      padding:0 4rem;
+      position:relative;
+    }
+    .hero-image{position:relative;display:flex;justify-content:center;align-items:center;}
+    .hero-image::before{content:'';position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(0,212,255,.18),transparent 70%);filter:blur(40px);}
+    .hero-image img{max-width:520px;width:100%;position:relative;z-index:2;filter:drop-shadow(0 0 25px rgba(0,212,255,.25)) drop-shadow(0 0 60px rgba(124,58,237,.15));animation:floatPortrait 8s ease-in-out infinite;}
+    @keyframes floatPortrait{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+    .hero-inner { max-width: 700px; }
+    .hero-eyebrow {
+      font-family: var(--font-m);
+      font-size: .78rem;
+      color: var(--cyan);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp .6s .2s forwards;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 36px; height: 1px;
+      background: var(--cyan);
+    }
+    .hero-name {
+      font-family: var(--font-d);
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: .5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp .6s .4s forwards;
+    }
+    .hero-name span { color: var(--cyan); }
+    .hero-title {
+      font-family: var(--font-m);
+      font-size: clamp(.95rem, 2vw, 1.1rem);
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      min-height: 1.6em;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp .6s .6s forwards;
+    }
+    .cursor-blink {
+      display: inline-block;
+      width: 2px;
+      background: var(--cyan);
+      animation: blink .8s step-end infinite;
+      vertical-align: text-bottom;
+      margin-left: 1px;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .hero-desc {
+      font-size: .95rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp .6s .8s forwards;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp .6s 1s forwards;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .75rem 1.75rem;
+      background: var(--cyan);
+      color: var(--bg);
+      font-family: var(--font-d);
+      font-weight: 600;
+      font-size: .85rem;
+      border-radius: 8px;
+      transition: all .2s;
+    }
+    .btn-primary:hover { background: #20deff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,212,255,.3); }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .75rem 1.75rem;
+      background: transparent;
+      color: var(--text);
+      font-family: var(--font-d);
+      font-weight: 500;
+      font-size: .85rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: all .2s;
+    }
+    .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-2px); }
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 3rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp .6s 1.2s forwards;
+    }
+    .hero-stat-num {
+      font-family: var(--font-d);
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--white);
+    }
+    .hero-stat-num span { color: var(--cyan); }
+    .hero-stat-label {
+      font-size: .75rem;
+      color: var(--muted);
+      margin-top: .1rem;
+    }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* scroll hint */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 4rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font-size: .72rem;
+      color: var(--muted);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp .6s 1.6s forwards;
+    }
+    .scroll-hint::after {
+      content: '';
+      display: block;
+      width: 40px; height: 1px;
+      background: var(--muted);
+    }
+
+    /* ── ABOUT ───────────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .about-text p {
+      font-size: .92rem;
+      line-height: 1.85;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .about-text p strong { color: var(--text); }
+    .about-details { display: flex; flex-direction: column; gap: .6rem; margin-top: 1.5rem; }
+    .about-detail-item {
+      display: flex;
+      gap: .75rem;
+      font-size: .82rem;
+    }
+    .about-detail-item .label { color: var(--muted); min-width: 80px; }
+    .about-detail-item .value { color: var(--text); font-weight: 500; }
+    .about-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+    }
+    .about-card-title {
+      font-family: var(--font-d);
+      font-weight: 600;
+      font-size: .9rem;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .about-card-title .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); }
+    .cert-list { display: flex; flex-direction: column; gap: .9rem; }
+    .cert-item {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+    }
+    .cert-icon {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      background: var(--cyan-dim);
+      border: 1px solid rgba(0,212,255,.2);
+      display: grid; place-items: center;
+      font-size: .75rem;
+      flex-shrink: 0;
+      color: var(--cyan);
+    }
+    .cert-name { font-size: .8rem; color: var(--text); font-weight: 500; }
+    .cert-org { font-size: .72rem; color: var(--muted); margin-top: .1rem; }
+
+    /* ── SKILLS ──────────────────────────────────────────── */
+    .skills-tabs {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .tab-btn {
+      padding: .45rem 1.1rem;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      font-family: var(--font-b);
+      font-size: .78rem;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .tab-btn:hover { color: var(--text); border-color: rgba(255,255,255,.2); }
+    .tab-btn.active { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); }
+    .skills-panel { display: none; }
+    .skills-panel.active { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 1rem; }
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1.25rem;
+      transition: all .25s;
+      cursor: default;
+    }
+    .skill-card:hover { border-color: rgba(0,212,255,.3); transform: translateY(-3px); background: rgba(255,255,255,.06); }
+    .skill-card-name {
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: .6rem;
+    }
+    .skill-bar-track {
+      height: 3px;
+      background: var(--border);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .skill-bar-fill {
+      height: 100%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+      width: 0;
+      transition: width 1s ease;
+    }
+    .skill-badge {
+      display: inline-block;
+      padding: .25rem .65rem;
+      border-radius: 6px;
+      font-family: var(--font-m);
+      font-size: .7rem;
+      font-weight: 600;
+      background: var(--cyan-dim);
+      color: var(--cyan);
+      border: 1px solid rgba(0,212,255,.2);
+      margin: .25rem .2rem;
+      transition: all .2s;
+    }
+    .skill-badge:hover { background: var(--cyan); color: var(--bg); }
+    .skill-badge.purple { background: var(--purple-dim); color: #a78bfa; border-color: rgba(124,58,237,.3); }
+    .skill-badge.purple:hover { background: var(--purple); color: var(--white); }
+    .skill-badge.green { background: rgba(16,185,129,.12); color: #34d399; border-color: rgba(16,185,129,.25); }
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: .4rem; }
+
+    /* ── EXPERIENCE ──────────────────────────────────────── */
+    .timeline { position: relative; padding-left: 1.5rem; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: .5rem; bottom: .5rem;
+      width: 1px;
+      background: var(--border);
+    }
+    .timeline-item {
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: -1.55rem;
+      top: .35rem;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--cyan);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 3px var(--cyan-dim);
+    }
+    .tl-period {
+      font-family: var(--font-m);
+      font-size: .72rem;
+      color: var(--cyan);
+      margin-bottom: .4rem;
+      letter-spacing: .05em;
+    }
+    .tl-role {
+      font-family: var(--font-d);
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--white);
+      margin-bottom: .2rem;
+    }
+    .tl-org {
+      font-size: .82rem;
+      color: var(--muted);
+      margin-bottom: .9rem;
+    }
+    .tl-points { display: flex; flex-direction: column; gap: .5rem; }
+    .tl-points li {
+      display: flex;
+      gap: .65rem;
+      font-size: .83rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .tl-points li::before {
+      content: '▸';
+      color: var(--cyan);
+      flex-shrink: 0;
+      margin-top: .05rem;
+      font-size: .75rem;
+    }
+
+    /* ── PROJECTS ────────────────────────────────────────── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: all .25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--cyan-dim), transparent 60%);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .project-card:hover { border-color: rgba(0,212,255,.3); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,.4); }
+    .project-card:hover::before { opacity: 1; }
+    .project-card.featured { border-color: rgba(0,212,255,.25); }
+    .project-card.featured .project-badge { display: inline-block; }
+    .project-badge {
+      display: none;
+      font-family: var(--font-m);
+      font-size: .65rem;
+      color: var(--cyan);
+      background: var(--cyan-dim);
+      border: 1px solid rgba(0,212,255,.25);
+      padding: .2rem .6rem;
+      border-radius: 4px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+    .project-icon {
+      width: 40px; height: 40px;
+      background: var(--purple-dim);
+      border: 1px solid rgba(124,58,237,.3);
+      border-radius: 10px;
+      display: grid; place-items: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .project-links { display: flex; gap: .5rem; }
+    .project-link {
+      width: 30px; height: 30px;
+      border-radius: 7px;
+      border: 1px solid var(--border);
+      display: grid; place-items: center;
+      font-size: .75rem;
+      color: var(--muted);
+      transition: all .2s;
+      position: relative;
+      z-index: 1;
+    }
+    .project-link:hover { color: var(--cyan); border-color: var(--cyan); }
+    .project-title {
+      font-family: var(--font-d);
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--white);
+      position: relative;
+      z-index: 1;
+    }
+    .project-desc {
+      font-size: .83rem;
+      color: var(--muted);
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+    .project-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+      position: relative;
+      z-index: 1;
+    }
+    .project-highlights li {
+      display: flex;
+      gap: .5rem;
+      font-size: .78rem;
+      color: var(--muted);
+    }
+    .project-highlights li::before {
+      content: '◆';
+      color: var(--purple);
+      font-size: .5rem;
+      flex-shrink: 0;
+      margin-top: .25rem;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .35rem;
+      margin-top: auto;
+      position: relative;
+      z-index: 1;
+    }
+    .project-tag {
+      font-family: var(--font-m);
+      font-size: .68rem;
+      padding: .2rem .55rem;
+      border-radius: 4px;
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    /* ── EDUCATION ───────────────────────────────────────── */
+    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 2rem; }
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      transition: all .25s;
+    }
+    .edu-card:hover { border-color: rgba(0,212,255,.25); }
+    .edu-degree {
+      font-family: var(--font-d);
+      font-weight: 600;
+      color: var(--white);
+      font-size: .92rem;
+      margin-bottom: .3rem;
+    }
+    .edu-inst { font-size: .8rem; color: var(--muted); margin-bottom: .6rem; }
+    .edu-meta { display: flex; gap: 1rem; }
+    .edu-cgpa {
+      font-family: var(--font-m);
+      font-size: .8rem;
+      color: var(--cyan);
+      background: var(--cyan-dim);
+      padding: .2rem .6rem;
+      border-radius: 5px;
+    }
+    .edu-year { font-size: .78rem; color: var(--muted); padding-top: .15rem; }
+    .competitive-row {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .competitive-icon {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      background: rgba(245,158,11,.12);
+      border: 1px solid rgba(245,158,11,.25);
+      display: grid; place-items: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .competitive-text .main { font-size: .85rem; font-weight: 600; color: var(--white); }
+    .competitive-text .sub { font-size: .75rem; color: var(--muted); margin-top: .1rem; }
+
+    /* ── CONTACT ─────────────────────────────────────────── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .contact-info { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      transition: all .2s;
+    }
+    .contact-item:hover { border-color: rgba(0,212,255,.25); }
+    .contact-icon {
+      width: 36px; height: 36px;
+      border-radius: 9px;
+      background: var(--cyan-dim);
+      display: grid; place-items: center;
+      font-size: .85rem;
+      color: var(--cyan);
+      flex-shrink: 0;
+    }
+    .contact-label { font-size: .72rem; color: var(--muted); margin-bottom: .1rem; }
+    .contact-value { font-size: .83rem; color: var(--text); font-weight: 500; }
+    .contact-cta {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .contact-cta-title {
+      font-family: var(--font-d);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.3;
+    }
+    .contact-cta-title span { color: var(--cyan); }
+    .contact-cta-desc { font-size: .83rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    footer {
+      margin-left: var(--nav-w);
+      padding: 2rem 4rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: .75rem;
+      color: var(--muted);
+    }
+    footer span { font-family: var(--font-m); }
+    footer .heart { color: #f87171; }
+
+    /* ── REVEAL ANIMATIONS ───────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .sidenav { transform: translateX(-100%); }
+      .sidenav.open { transform: translateX(0); }
+      .hamburger { display: flex; }
+      .main { margin-left: 0; }
+      footer { margin-left: 0; }
+      .section { padding: 4rem 1.5rem; }
+      #hero { padding: 0 1.5rem; padding-top: 5rem; }
+      .about-grid, .contact-grid, .edu-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .scroll-hint { left: 1.5rem; }
+    }
+    @media (max-width: 480px) {
+      .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+      .skills-panel.active { grid-template-columns: 1fr 1fr; }
+    }
+  
+.tech-orbit{position:absolute;right:8%;top:12%;display:flex;flex-wrap:wrap;gap:.6rem;max-width:320px;z-index:3}
+.tech-pill{padding:.35rem .7rem;border:1px solid rgba(0,212,255,.25);background:rgba(255,255,255,.04);border-radius:999px;
+font-size:.72rem;color:#00d4ff;backdrop-filter:blur(8px);animation:floatTech 6s ease-in-out infinite}
+.tech-pill:nth-child(even){animation-duration:8s}
+@keyframes floatTech{50%{transform:translateY(-10px)}}
+
+
+/* Premium V2 */
+#loader{position:fixed;inset:0;background:#090e1a;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.loader-text{font-family:'JetBrains Mono',monospace;color:#00d4ff}
+.loader-bar{width:220px;height:4px;background:#1a2238;margin-top:15px;overflow:hidden}
+.loader-bar span{display:block;height:100%;width:40%;background:#00d4ff;animation:load 1.2s infinite}
+@keyframes load{0%{transform:translateX(-100%)}100%{transform:translateX(600%)}}
+.theme-toggle{position:fixed;right:20px;top:20px;z-index:500;padding:10px;border-radius:50%;cursor:pointer;background:rgba(255,255,255,.08);backdrop-filter:blur(10px)}
+body.light{--bg:#f7f9fc;--bg2:#fff;--text:#111827;--white:#000;--muted:#4b5563;--surface:rgba(0,0,0,.03);--border:rgba(0,0,0,.08)}
+.project-card,.skill-card,.edu-card,.contact-item,.about-card{backdrop-filter:blur(18px);box-shadow:0 10px 30px rgba(0,212,255,.08)}
+.tilt{transform-style:preserve-3d;transition:transform .15s}
+.project-modal{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;z-index:1000}
+.project-modal .box{background:#111d35;padding:25px;border-radius:16px;max-width:700px;width:90%}
+@media(max-width:768px){.hero-image img{max-width:300px}.section{padding:3rem 1rem}}
+
+</style>
+
+<!-- Premium V3 assets -->
+
+<style>
+#terminalHero{margin-top:20px;background:rgba(0,0,0,.35);border:1px solid rgba(0,212,255,.2);padding:14px;border-radius:12px;font-family:monospace;color:#00d4ff}
+#neonCursor{width:18px;height:18px;border:2px solid #00d4ff;border-radius:50%;position:fixed;pointer-events:none;z-index:99999;box-shadow:0 0 20px #00d4ff}
+
+.github-card,.leetcode-card,.resume-viewer{background:rgba(255,255,255,.04);padding:16px;border-radius:14px;margin-top:16px}
+
+.carousel img{width:100%;border-radius:12px}
+</style>
 
 </head>
+<body>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="51">
+<div id="loader"><div class="loader-text">Initializing Portfolio...</div><div class="loader-bar"><span></span></div></div>
+<div class="theme-toggle" id="themeToggle">🌓</div>
+<div class="project-modal" id="projectModal"><div class="box"><h2>Project Showcase</h2><p>This portfolio highlights enterprise-grade microservices, Kafka event streaming, AI integrations and cloud deployments.</p><br><button onclick="document.getElementById('projectModal').style.display='none'">Close</button></div></div>
 
 
+<!-- Particle canvas -->
+<canvas id="bg-canvas"></canvas>
 
+<!-- Hamburger -->
+<div class="hamburger" id="hamburger" aria-label="Menu">
+  <span></span><span></span><span></span>
+</div>
 
-    <div class="wrapper">
-        <div class="sidebar">
-            <div class="sidebar-header">
-                <img src="img/profile.jpg" alt="Image">
-            </div>
-            <div class="sidebar-content">
-                <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-                    <a href="#" class="navbar-brand">Navigation</a>
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarCollapse">
-                        <ul class="nav navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#header">Home<i class="fa fa-home"></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#about">About<i class="fa fa-address-card"></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#experience">Certifications<i class="fa fa-star"></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#service">Service<i class="fa fa-tasks"></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#portfolio">Portfolio<i class="fa fa-file-archive"></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#contact">Contact<i class="fa fa-envelope"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-            <div class="sidebar-footer">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.linkedin.com/in/poornachandra35"><i class="fab fa-linkedin-in"></i></a>
-            </div>
+<!-- Side Nav -->
+<nav class="sidenav" id="sidenav">
+  <div class="sidenav-brand">
+    <div class="name">Poornachandra S K</div>
+    <span class="role">// backend engineer</span>
+    <div class="status-dot">Open to work</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#hero" class="active"><span class="nav-icon">⌂</span> Home</a></li>
+    <li><a href="#about"><span class="nav-icon">◉</span> About</a></li>
+    <li><a href="#skills"><span class="nav-icon">⚡</span> Skills</a></li>
+    <li><a href="#experience"><span class="nav-icon">◈</span> Experience</a></li>
+    <li><a href="#projects"><span class="nav-icon">◧</span> Projects</a></li>
+    <li><a href="#education"><span class="nav-icon">◎</span> Education</a></li>
+    <li><a href="#contact"><span class="nav-icon">✉</span> Contact</a></li>
+  </ul>
+  <div class="sidenav-footer">
+    <a href="https://github.com/poornachandra35" target="_blank" title="GitHub">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/poornachandra35" target="_blank" title="LinkedIn">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+    <a href="mailto:poornachandra.biz@gmail.com" title="Email">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    </a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<div class="site-wrapper">
+  <div class="main">
+
+    <!-- ── HERO ── -->
+    <section id="hero">
+      <div class="hero-inner">
+        <div class="hero-eyebrow">Available for opportunities</div>
+        <h1 class="hero-name">Poornachandra<br><span>S K</span></h1>
+        <div class="hero-title" id="hero-title"><span id="typed-text"></span><span class="cursor-blink"></span></div>
+        <p class="hero-desc">
+          MCA candidate at Presidency College, Bengaluru. I build event-driven microservices,
+          design clean REST APIs, and deploy cloud-native systems with Spring Boot, Kafka, Docker &amp; Kubernetes.
+          Trained at Capgemini · 300+ LeetCode problems · Hackathon winner.
+        </p>
+        
+<div id="terminalHero">
+> whoami<br>
+Poornachandra S K<br>
+Java Full Stack Developer<br>
+Spring Boot | Microservices | Kafka | AWS
+</div>
+<div class="hero-cta">
+          <a href="#projects" class="btn-primary">View Projects ↗</a>
+          <a href="#contact" class="btn-outline">Get in Touch</a>
         </div>
-        <div class="content">
-            <!-- Header Start -->
-            <div class="header" id="header">
-                <div class="content-inner">
-                    <p>I'm</p>
-                    <h1>Poornachandra S K</h1>
-                    <h2></h2>
-                    <div class="typed-text"> MCA Student, Full-Stack Developer, Python Backend Developer, FastAPI &
-                        React Developer, Cloud & AI Enthusiast</div>
-                </div>
-            </div>
-            <!-- Header End -->
-
-
-            <!-- Large Button Start -->
-            <div class="large-btn">
-                <div class="content-inner">
-
-                    <a class="btn" href="img/poornachandra s k.pdf" download="Poornachandra_Resume.pdf"><i
-                            class="fa fa-download"></i>Resume</a>
-                    <a class="btn" href="#contact"><i class="fa fa-hands-helping"></i>Hire Me</a>
-                </div>
-            </div>
-            <!-- Large Button End -->
-
-            <!-- About Start -->
-            <div class="about" id="about">
-                <div class="content-inner">
-                    <div class="content-header">
-                        <h2>About Me</h2>
-                    </div>
-                    <div class="row align-items-center">
-                        <div class="col-md-6 col-lg-5">
-                            <img src="img/about.jpg" alt="Image">
-                        </div>
-                        <div class="col-md-6 col-lg-7">
-                            <p>
-                                I’m an MCA student who enjoys building reliable and scalable backend systems.
-                                I like writing clean, easy-to-understand code that solves real-world problems,
-                                and I’m always curious about how things work behind the scenes. Whether it’s working on
-                                projects,
-                                participating in hackathons, or learning about cloud and security, I bring full focus
-                                and energy.
-                                I’m excited to keep growing and applying this mindset as I build my career in tech.
-                            </p>
-                            <a class="btn" href="#contact">Hire Me</a>
-                        </div>
-                    </div>
-                    <center> <small style=font-size:20px; id="skillHint" class="text-muted skill-hint">
-                            <br> <br>Click on a skill to see what I’ve worked on
-                        </small></center>
-                    <div class="row">
-
-                        <!-- LEFT COLUMN -->
-                        <div class="col-md-6">
-                            <div class="skills">
-
-                                <!-- PYTHON -->
-                                <div class="skill-item" onclick="toggleDetails('python-details')">
-                                    <div class="skill-name">
-                                        <p>Python</p>
-                                        <p>90% <span class="expand-indicator">+</span></p>
-                                    </div>
-
-                                    <div class="progress">
-                                        <div class="progress-bar" aria-valuenow="90"></div>
-                                    </div>
-                                    <div class="skill-details" id="python-details">
-                                        <ul>
-                                            <li>Advanced OOP & Design Patterns</li>
-                                            <li>Data Structures & Algorithmic Optimization</li>
-                                            <li>Concurrency & Async Programming</li>
-                                            <li>Automation & Scripting for DevOps</li>
-                                            <li>Backend Architecture Design</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <!-- FASTAPI & FLASK -->
-                                <div class="skill-item" onclick="toggleDetails('backend-details')">
-                                    <div class="skill-name">
-                                        <p>FastAPI & Flask</p>
-                                        <p>85%</p>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" aria-valuenow="85"></div>
-                                    </div>
-                                    <div class="skill-details" id="backend-details">
-                                        <ul>
-                                            <li>REST API Design & Versioning</li>
-                                            <li>JWT & OAuth2 Authentication</li>
-                                            <li>Async APIs with FastAPI</li>
-                                            <li>Dependency Injection & Middleware</li>
-                                            <li>Production-ready API Structuring</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <!-- REACT -->
-                                <div class="skill-item" onclick="toggleDetails('react-details')">
-                                    <div class="skill-name">
-                                        <p>React.js</p>
-                                        <p>50%</p>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" aria-valuenow="50"></div>
-                                    </div>
-                                    <div class="skill-details" id="react-details">
-                                        <ul>
-                                            <li>Component-driven Architecture</li>
-                                            <li>State Management (Hooks & Context)</li>
-                                            <li>API Integration & Async Data Handling</li>
-                                            <li>Reusable UI Components</li>
-                                            <li>Frontend–Backend Integration</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <!-- REST + GRAPHQL -->
-                                <div class="skill-item" onclick="toggleDetails('api-details')">
-                                    <div class="skill-name">
-                                        <p>REST APIs & GraphQL</p>
-                                        <p>85%</p>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" aria-valuenow="85"></div>
-                                    </div>
-                                    <div class="skill-details" id="api-details">
-                                        <ul>
-                                            <li>RESTful API Design Principles</li>
-                                            <li>GraphQL Queries, Mutations & Schemas</li>
-                                            <li>API Security & Rate Limiting</li>
-                                            <li>Microservices Communication</li>
-                                            <li>Performance Optimization & Caching</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-6">
-                            <div class="skills">
-
-                                <!-- DATABASES -->
-                                <div class="skill-item" onclick="toggleDetails('db-details')">
-                                    <div class="skill-name">
-                                        <p>SQL & Databases (MySQL, PostgreSQL)</p>
-                                        <p>80%</p>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" aria-valuenow="80"></div>
-                                    </div>
-                                    <div class="skill-details" id="db-details">
-                                        <ul>
-                                            <li>Schema Design & Normalization</li>
-                                            <li>Query Optimization & Indexing</li>
-                                            <li>Transactions & ACID Compliance</li>
-                                            <li>ORM Optimization (SQLAlchemy)</li>
-                                            <li>Database Performance Tuning</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <!-- DOCKER & CI/CD -->
-                                <div class="skill-item" onclick="toggleDetails('devops-details')">
-                                    <div class="skill-name">
-                                        <p>Docker & CI/CD (GitHub Actions)</p>
-                                        <p>75%</p>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" aria-valuenow="75"></div>
-                                    </div>
-                                    <div class="skill-details" id="devops-details">
-                                        <ul>
-                                            <li>Dockerizing Backend Applications</li>
-                                            <li>Multi-stage Docker Builds</li>
-                                            <li>CI/CD Pipelines with GitHub Actions</li>
-                                            <li>Automated Testing & Deployment</li>
-                                            <li>Environment-based Configuration</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <!-- CLOUD -->
-                                <div class="skill-item" onclick="toggleDetails('cloud-details')">
-                                    <div class="skill-name">
-                                        <p>Cloud (AWS, GCP)</p>
-                                        <p>70%</p>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" aria-valuenow="70"></div>
-                                    </div>
-                                    <div class="skill-details" id="cloud-details">
-                                        <ul>
-                                            <li>Cloud-native Architecture</li>
-                                            <li>Compute, Storage & Networking</li>
-                                            <li>IAM & Security Best Practices</li>
-                                            <li>Deployments on AWS & GCP</li>
-                                            <li>Cost Optimization Strategies</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <!-- AI / ML -->
-                                <div class="skill-item" onclick="toggleDetails('ai-details')">
-                                    <div class="skill-name">
-                                        <p>AI / ML & NLP</p>
-                                        <p>70%</p>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" aria-valuenow="70"></div>
-                                    </div>
-                                    <div class="skill-details" id="ai-details">
-                                        <ul>
-                                            <li>Machine Learning Model Pipelines</li>
-                                            <li>NLP with Transformers & spaCy</li>
-                                            <li>Model Deployment & Inference APIs</li>
-                                            <li>Data Preprocessing & Feature Engineering</li>
-                                            <li>AI-powered Application Integration</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-            <!-- About End -->
-
-            <!-- Education Start -->
-            <div class="education" id="education">
-                <div class="content-inner">
-                    <div class="content-header">
-                        <h2>Education</h2>
-                    </div>
-                    <div class="row align-items-center">
-
-                        <div class="col-md-6">
-                            <div class="edu-col">
-                                <span>2024 – Ongoing</span>
-                                <h3>Master of Computer Applications </h3>
-                                <p><strong>Institution:</strong> Presidency College (Affil. to BCU)</p>
-                                <p><strong>Location:</strong> Bengaluru, Karnataka</p>
-                                <p><strong>CGPA:</strong> 8.67 (2nd Semester)</p>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="edu-col">
-                                <span>2021 – 2024</span>
-                                <h3>Bachelor of Computer Applications </h3>
-                                <p><strong>Institution:</strong> Basaveshwar Science College</p>
-                                <p><strong>Location:</strong> Bagalkot, Karnataka</p>
-                                <p><strong>CGPA:</strong> 8.58</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- Education end -->
-
-            <!-- Cerificate Start -->
-            <div class="experience" id="experience">
-                <div class="content-inner">
-                    <div class="content-header">
-                        <h2>Certifications</h2>
-                    </div>
-                    <div class="row align-items-center">
-
-                        <!-- Nov 30, 2024 -->
-                        <div class="col-md-4">
-                            <div class="exp-col">
-                                <img id="cert" src="img/cert5.png">
-                                <span style="text-align: center;">Earned Nov 30, 2024</span>
-                                <p><strong>Design Thinking and Innovation</strong><br>AICTE Training And Learning<br>
-                                <div class="large-btn-2">
-                                    <div class="content-inner-2">
-                                        <a class="btn" href="img/certificate.pdf" target="_blank">
-                                            <i class="fas fa-file-alt"></i>View Certificate</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Apr 22, 2025 -->
-                        <div class="col-md-4">
-                            <div class="exp-col">
-                                <img id="cert" src="img/cert3.png">
-                                <span style="text-align: center;">Earned Apr 22, 2025</span>
-                                <p><strong>Prompt Design in Vertex AI</strong><br>Google Cloud Skills Boost<br>
-                                <div class="large-btn-2">
-                                    <div class="content-inner-2">
-                                        <a class="btn"
-                                            href="https://www.cloudskillsboost.google/public_profiles/b5aea7c5-e3cd-4ea4-bf0e-26ad4b6b5077/badges/15156691"
-                                            target="_blank">
-                                            <i class="fas fa-file-alt"></i>View Certificate</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Jun 10, 2025 -->
-                        <div class="col-md-4">
-                            <div class="exp-col">
-                                <img id="cert" src="img/cert1.png">
-                                <span style="text-align: center;">Earned Jun 10, 2025</span>
-                                <p><strong>Develop GenAI Apps with Gemini and Streamlit</strong><br>Google Cloud Skills
-                                    Boost<br>
-                                <div class="large-btn-2">
-                                    <div class="content-inner-2">
-                                        <a class="btn"
-                                            href="https://www.cloudskillsboost.google/public_profiles/b5aea7c5-e3cd-4ea4-bf0e-26ad4b6b5077/badges/16417428"
-                                            target="_blank">
-                                            <i class="fas fa-file-alt"></i>View Certificate</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Jun 10, 2025 -->
-                        <div class="col-md-4">
-                            <div class="exp-col">
-                                <img id="cert" src="img/cert4.png">
-                                <span style="text-align: center;">Earned Jun 10, 2025</span>
-                                <p><strong>Develop GenAI Apps with Gemini and Streamlit</strong><br>Google Cloud Skills
-                                    Boost<br>
-                                <div class="large-btn-2">
-                                    <div class="content-inner-2">
-                                        <a class="btn"
-                                            href="https://www.cloudskillsboost.google/public_profiles/b5aea7c5-e3cd-4ea4-bf0e-26ad4b6b5077/badges/16742751"
-                                            target="_blank">
-                                            <i class="fas fa-file-alt"></i>View Certificate</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Jun 27, 2025 -->
-                        <div class="col-md-4">
-                            <div class="exp-col">
-                                <img id="cert" src="img/cert4.png">
-                                <span style="text-align: center;">Earned Jun 27, 2025</span>
-                                <p><strong>Inspect Rich Documents with Gemini Multimodality and Multimodal
-                                        RAG</strong><br>Google Cloud Skills Boost<br>
-                                <div class="large-btn-2">
-                                    <div class="content-inner-2">
-                                        <a class="btn"
-                                            href="https://www.cloudskillsboost.google/public_profiles/b5aea7c5-e3cd-4ea4-bf0e-26ad4b6b5077/badges/16742751"
-                                            target="_blank">
-                                            <i class="fas fa-file-alt"></i>View Certificate</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="exp-col">
-                                <img id="cert" src="img/image6.png">
-                                <span style="text-align: center;">Earned Jul 5, 2025</span>
-                                <p><strong>Generative AI with the Gemini API in Vertex AI</strong><br>Google Cloud
-                                    Skills Boost<br>
-                                <div class="large-btn-2">
-                                    <div class="content-inner-2">
-                                        <a class="btn"
-                                            href="https://coursera.org/share/4625680bd917f5d8d41feda2a7cbcdbc"
-                                            target="_blank">
-                                            <i class="fas fa-file-alt"></i>View Certificate</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Jul 9, 2025 -->
-                        <div class="col-md-4">
-                            <div class="exp-col">
-                                <img id="cert" src="img/hack2skill.png">
-                                <span style="text-align: center;">Earned July 9, 2025</span>
-                                <p><strong>Successfully completed Gen AI Academy</strong><br>Hack2Skills<br>
-                                <div class="large-btn-2">
-                                    <div class="content-inner-2">
-                                        <a class="btn"
-                                            href="https://certificate.hack2skill.com/user/genai7/2025H2S04GENAI-A700181"
-                                            target="_blank">
-                                            <i class="fas fa-file-alt"></i>View Certificate</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Oct 23, 2025 -->
-                        <div class="col-md-4">
-                            <div class="exp-col">
-                                <img id="cert" src="img/image4.png">
-                                <span style="text-align: center;">Earned Oct 23, 2025</span>
-                                <p><strong>Cloud 101 - Training Badge</strong><br>AWS Educate<br>
-                                <div class="large-btn-2">
-                                    <div class="content-inner-2">
-                                        <a class="btn"
-                                            href="https://www.credly.com/badges/5fe873a1-0654-4b4f-a42c-b35c5ee5c68e/public_url"
-                                            target="_blank">
-                                            <i class="fas fa-file-alt"></i>View Certificate</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Nov 17, 2025 -->
-                        <div class="col-md-4">
-                            <div class="exp-col">
-                                <img id="cert" src="img/image.png">
-                                <span style="text-align: center;">Earned Nov 17, 2025</span>
-                                <p><strong>Pandas & NumPy</strong><br>By COURSERA<br>
-                                <div class="large-btn-2">
-                                    <div class="content-inner-2">
-                                        <a class="btn"
-                                            href="https://coursera.org/share/b435c9be59529e1b4de6f2baf55b279e"
-                                            target="_blank">
-                                            <i class="fas fa-file-alt"></i>View Certificate</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Nov 21, 2025 -->
-                        <div class="col-md-4">
-                            <div class="exp-col">
-                                <img id="cert" src="img/image2.png">
-                                <span style="text-align: center;">Earned Nov 21, 2025</span>
-                                <p><strong>Python: CNN, ANN & RNN</strong><br>By EDUCBA<br>
-                                <div class="large-btn-2">
-                                    <div class="content-inner-2">
-                                        <a class="btn"
-                                            href="https://coursera.org/share/38f99d34818aaa766208cd2486e963fd"
-                                            target="_blank">
-                                            <i class="fas fa-file-alt"></i>View Certificate</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Dec 10, 2025 -->
-                        <div class="col-md-4">
-                            <div class="exp-col">
-                                <img id="cert" src="img/image1.png">
-                                <span style="text-align: center;">Earned Dec 10, 2025</span>
-                                <p><strong>Modern API Development</strong><br>By Edureka<br>
-                                <div class="large-btn-2">
-                                    <div class="content-inner-2">
-                                        <a class="btn"
-                                            href="https://coursera.org/share/744267d008b7af37ff9fec2847bba7aa"
-                                            target="_blank">
-                                            <i class="fas fa-file-alt"></i>View Certificate</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="exp-col">
-                                <img id="cert" src="img/image5.png">
-                                <span style="text-align: center;">Earned Dec 24, 2025</span>
-                                <p><strong>AWS Cloud Practitioner </strong><br>BY AWS<br>
-                                <div class="large-btn-2">
-                                    <div class="content-inner-2">
-                                        <a class="btn"
-                                            href="https://coursera.org/share/4625680bd917f5d8d41feda2a7cbcdbc"
-                                            target="_blank">
-                                            <i class="fas fa-file-alt"></i>View Certificate</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <!-- Service Start -->
-            <div class="service" id="service">
-                <div class="content-inner">
-                    <div class="content-header">
-                        <h2>Technical Proficiency</h2>
-                    </div>
-                    <div class="row align-items-center">
-
-                        <div class="col-md-6">
-                            <div class="srv-col">
-                                <i class="fa fa-laptop"></i>
-                                <h3>Full-Stack Web Development</h3>
-                                <p>
-                                    Develop scalable web applications using <strong>Python (Flask, FastAPI)</strong>,
-                                    <strong>React.js</strong>, and modern JavaScript with clean architecture and RESTful
-                                    APIs.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="srv-col">
-                                <i class="fa fa-database"></i>
-                                <h3>Database & Data Management</h3>
-                                <p>
-                                    Design and manage relational and NoSQL databases including
-                                    <strong>MySQL</strong>, <strong>PostgreSQL</strong>, and <strong>MongoDB</strong>
-                                    with optimized queries and schema design.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="srv-col">
-                                <i class="fab fa-python"></i>
-                                <h3>Python Backend Development</h3>
-                                <p>
-                                    Strong proficiency in Python for backend development, data processing,
-                                    API implementation, automation, and algorithmic problem-solving.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="srv-col">
-                                <i class="fa fa-cloud"></i>
-                                <h3>Cloud & DevOps Fundamentals</h3>
-                                <p>
-                                    Experience deploying applications using <strong>AWS</strong> and <strong>Google
-                                        Cloud</strong>,
-                                    containerization with <strong>Docker</strong>, and CI/CD using <strong>GitHub
-                                        Actions</strong>.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="srv-col">
-                                <i class="fab fa-github"></i>
-                                <h3>Version Control & Collaboration</h3>
-                                <p>
-                                    Proficient with <strong>Git & GitHub</strong> for version control, branching
-                                    strategies,
-                                    collaborative development, and maintaining well-documented repositories.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="srv-col">
-                                <i class="fa fa-brain"></i>
-                                <h3>AI / ML & Algorithmic Problem Solving</h3>
-                                <p>
-                                    Hands-on experience with <strong>Machine Learning</strong>, <strong>NLP</strong>,
-                                    backtracking algorithms, and optimization techniques using Python libraries.
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Portfolio Start -->
-            <div class="portfolio" id="portfolio">
-                <div class="content-inner">
-                    <div class="content-header">
-                        <h2>Projects</h2>
-                    </div>
-
-                    <!-- Filters -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <ul id="portfolio-flters">
-                                <li data-filter="*" class="filter-active">All</li>
-                                <li data-filter=".fullstack">Full Stack</li>
-                                <li data-filter=".backend">Backend / API</li>
-                                <li data-filter=".algorithms">Algorithms & AI</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Portfolio Items -->
-                    <div class="row portfolio-container">
-
-                        <!-- Project 1 -->
-                        <div class="col-lg-4 col-md-6 portfolio-item fullstack">
-                            <div class="portfolio-wrap">
-                                <figure>
-                                    <img src="img/portfolio-3.png" class="img-fluid" alt="AI Attendance System">
-                                    <a href="https://nstars.pythonanywhere.com/" class="link-preview" title="Live Demo">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                    <a href="https://github.com/poornachandra35/absent_tracker" class="link-details"
-                                        title="GitHub">
-                                        <i class="fa fa-link"></i>
-                                    </a>
-                                    <a class="portfolio-title" href="#">
-                                        AI-Powered Attendance & Leave System
-                                        <span>Flask • React • MySQL • AWS</span>
-                                    </a>
-                                </figure>
-                            </div>
-                        </div>
-
-                        <!-- Project 2 -->
-                        <div class="col-lg-4 col-md-6 portfolio-item backend">
-                            <div class="portfolio-wrap">
-                                <figure>
-                                    <img src="img/portfolio-2.png" class="img-fluid" alt="FastAPI Platform">
-                                    <a href="https://www.linkedin.com/posts/poornachandra35_fastapi-machinelearning-mobilenetv2-activity-7404128408152129536-BVnd?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEAnmykBlOYHk4nfPXOVcr-nCitg88CdOF8"
-                                        class="link-preview" title="API Docs">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                    <a href="https://github.com/poornachandra35/Multi-Service-API-with-FastAPI-Go-Machine-Learning"
-                                        class="link-details" title="GitHub">
-                                        <i class="fa fa-link"></i>
-                                    </a>
-                                    <a class="portfolio-title" href="#">
-                                        Cloud-Native API Services Platform
-                                        <span>FastAPI • Docker • PostgreSQL</span>
-                                    </a>
-                                </figure>
-                            </div>
-                        </div>
-
-                        <!-- Project 3 -->
-                        <div class="col-lg-4 col-md-6 portfolio-item algorithms">
-                            <div class="portfolio-wrap">
-                                <figure>
-                                    <img src="img/portfolio-1.png" class="img-fluid" alt="Algorithm Visualizer">
-                                    <a href="#" class="link-preview" title="Demo">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                    <a href="https://github.com/poornachandra35" class="link-details" title="GitHub">
-                                        <i class="fa fa-link"></i>
-                                    </a>
-                                    <a class="portfolio-title" href="#">
-                                        Algorithmic Optimization Toolkit
-                                        <span>Graph • Backtracking • DSA</span>
-                                    </a>
-                                </figure>
-                            </div>
-                        </div>
-
-                        <!-- Project 4 -->
-                        <div class="col-lg-4 col-md-6 portfolio-item backend">
-                            <div class="portfolio-wrap">
-                                <figure>
-                                    <img src="img/portfolio-4.jpg" class="img-fluid" alt="NLP APIs">
-                                    <a href="#" class="link-preview" title="Demo">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                    <a href="https://github.com/poornachandra35" class="link-details" title="GitHub">
-                                        <i class="fa fa-link"></i>
-                                    </a>
-                                    <a class="portfolio-title" href="#">
-                                        NLP & Utility APIs
-                                        <span>Hugging Face • spaCy • FastAPI</span>
-                                    </a>
-                                </figure>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <!-- Portfolio End -->
-
-
-
-
-            <!-- Contact Start -->
-            <div class="contact" id="contact">
-                <div class="content-inner">
-                    <div class="content-header">
-                        <h2>Contact</h2>
-                    </div>
-                    <div class="row align-items-center">
-                        <div class="col-md-6">
-                            <div class="contact-info">
-                                <p><i class="fa fa-user"></i>Poornachandra S K</p>
-                                <p><i class="fa fa-tag"></i>Software Developer</p>
-                                <p><i class="fa fa-envelope"></i><a
-                                        href="mailto:info@example.com">poornachandr.biz@gmail.com</a></p>
-                                <p><i class="fa fa-phone"></i><a href="tel:+1234567890">+91-7676971410</a></p>
-                                <p><i class="fa fa-map-marker"></i>Bengaluru, Karnatak</p>
-                                <div class="social">
-                                    <a class="btn" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn" href="https://www.linkedin.com/in/poornachandra35"><i
-                                            class="fab fa-linkedin-in"></i></a>
-                                    <a class="btn" href="https://www.instagram.com/stash_guy35/"><i
-                                            class="fab fa-instagram"></i></a>
-                                    <a class="btn" href=""><i class="fab fa-youtube"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form">
-                                <form id="contactForm">
-                                    <form id="contactForm">
-
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <input type="text" id="name" class="form-control"
-                                                    placeholder="Your Name" required />
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <input type="email" id="emailField" class="form-control"
-                                                    placeholder="Your Email" required />
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input type="text" id="subject" class="form-control" placeholder="Subject"
-                                                required />
-                                        </div>
-
-                                        <div class="form-group">
-                                            <textarea id="message" class="form-control" rows="5" placeholder="Message"
-                                                required></textarea>
-                                        </div>
-
-                                        <div>
-                                            <button class="btn" type="submit">Send Message</button>
-                                        </div>
-
-                                    </form>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Contact End -->
-
-
-            <!-- Footer Start -->
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-num">7<span>+</span></div>
+            <div class="hero-stat-label">Microservices Built</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">35<span>+</span></div>
+            <div class="hero-stat-label">REST APIs Designed</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">300<span>+</span></div>
+            <div class="hero-stat-label">LeetCode Problems</div>
+          </div>
         </div>
-    </div>
+      </div>
+      <div class="hero-image"><img src="image(223).png" alt="Poornachandra"></div>
+<div class="tech-orbit">
+<span class="tech-pill">Java</span>
+<span class="tech-pill">Spring Boot</span>
+<span class="tech-pill">Kafka</span>
+<span class="tech-pill">Docker</span>
+<span class="tech-pill">AWS</span>
+<span class="tech-pill">React</span>
+<span class="tech-pill">MySQL</span>
+</div>
+<div class="scroll-hint">Scroll to explore</div>
+    </section>
 
+    <!-- ── ABOUT ── -->
+    <section id="about" class="section reveal">
+      <div class="section-tag">01 — About</div>
+      <h2 class="section-title">Who I Am</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>I'm a <strong>full-stack Java engineer</strong> in the making — currently completing my MCA at Presidency College, Bengaluru (CGPA 8.67). I specialise in building production-grade backend systems that scale: distributed microservices, event-driven architectures, and cloud-native deployments.</p>
+          <p>I completed an intensive <strong>Java Full Stack training at Capgemini</strong> (Jan–Jun 2026), where I worked across Spring Boot, REST APIs, MySQL, and Agile workflows. My internship at Softmusk Info gave me hands-on experience shipping React interfaces and AWS backend services.</p>
+          <p>Beyond work, I actively solve algorithmic problems on LeetCode (300+ problems), won 1st place at an inter-college hackathon, and explore AI integration — building an LLM-powered assistant inside my auction platform.</p>
+          <div class="about-details">
+            <div class="about-detail-item"><span class="label">Location</span><span class="value">Bengaluru, Karnataka</span></div>
+            <div class="about-detail-item"><span class="label">Email</span><span class="value">poornachandra.biz@gmail.com</span></div>
+            <div class="about-detail-item"><span class="label">Focus</span><span class="value">Java · Spring Boot · Microservices</span></div>
+            <div class="about-detail-item"><span class="label">Status</span><span class="value" style="color:var(--green)">Open to full-time roles</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="about-card">
+            <div class="about-card-title"><div class="dot"></div> Certifications</div>
+            <div class="cert-list">
+              <div class="cert-item">
+                <div class="cert-icon">☁️</div>
+                <div>
+                  <div class="cert-name">AWS Cloud Practitioner (CLF-C02)</div>
+                  <div class="cert-org">Coursera · Verified</div>
+                </div>
+              </div>
+              <div class="cert-item">
+                <div class="cert-icon">🤖</div>
+                <div>
+                  <div class="cert-name">Prompt Design in Vertex AI</div>
+                  <div class="cert-org">Google / Credly · Verified</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <!-- Back to Top -->
-    <a href="#" class="back-to-top"><i class="fa fa-angle-double-up"></i></a>
-    <script>
-        document.querySelectorAll('a[href="#contact"]').forEach(btn => {
-            btn.addEventListener('click', function () {
-                setTimeout(() => {
-                    const emailInput = document.getElementById("emailField");
-                    if (emailInput) {
-                        emailInput.focus();
-                    }
-                }, 600);
-            });
-        });
+    <!-- ── SKILLS ── -->
+    <section id="skills" class="section reveal">
+      <div class="section-tag">02 — Skills</div>
+      <h2 class="section-title">Tech Stack</h2>
+      <p class="section-sub">A focused toolkit built through real projects — from API design to containerised deployment.</p>
 
-        document.getElementById("contactForm").addEventListener("submit", function (e) {
-            e.preventDefault();
+      <div class="skills-tabs">
+        <button class="tab-btn active" data-tab="backend">Backend</button>
+        <button class="tab-btn" data-tab="frontend">Frontend</button>
+        <button class="tab-btn" data-tab="devops">DevOps &amp; Cloud</button>
+        <button class="tab-btn" data-tab="ai">AI &amp; Data</button>
+        <button class="tab-btn" data-tab="tools">Tools</button>
+      </div>
 
-            const name = document.getElementById("name").value;
-            const subject = document.getElementById("subject").value;
-            const message = document.getElementById("message").value;
+      <div class="skills-panel active" id="tab-backend">
+        <div class="skill-card"><div class="skill-card-name">Java (Advanced)</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="90"></div></div></div>
+        <div class="skill-card"><div class="skill-card-name">Spring Boot</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="88"></div></div></div>
+        <div class="skill-card"><div class="skill-card-name">Spring Security / JWT</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="80"></div></div></div>
+        <div class="skill-card"><div class="skill-card-name">Microservices</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="85"></div></div></div>
+        <div class="skill-card"><div class="skill-card-name">REST API Design</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="88"></div></div></div>
+        <div class="skill-card"><div class="skill-card-name">Apache Kafka</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="75"></div></div></div>
+        <div class="skill-card"><div class="skill-card-name">MySQL / PostgreSQL</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="82"></div></div></div>
+        <div class="skill-card"><div class="skill-card-name">Python / FastAPI</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="78"></div></div></div>
+      </div>
 
-            const mailtoLink =
-                `mailto:stashguy5@gmail.com` +
-                `?subject=${encodeURIComponent(subject)}` +
-                `&body=${encodeURIComponent(
-                    "Name: " + name + "\n\n" +
-                    "Message:\n" + message
-                )}`;
+      <div class="skills-panel" id="tab-frontend">
+        <div class="skill-card"><div class="skill-card-name">React.js</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="75"></div></div></div>
+        <div class="skill-card"><div class="skill-card-name">HTML5 / CSS3</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="80"></div></div></div>
+        <div class="skill-card"><div class="skill-card-name">JavaScript</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="72"></div></div></div>
+        <div class="skill-card"><div class="skill-card-name">TypeScript (Learning)</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="45"></div></div></div>
+      </div>
 
-            window.location.href = mailtoLink;
-        });
-    </script>
+      <div class="skills-panel" id="tab-devops">
+        <div class="skill-card"><div class="skill-card-name">Docker</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="80"></div></div></div>
+        <div class="skill-card"><div class="skill-card-name">Kubernetes</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="72"></div></div></div>
+        <div class="skill-card"><div class="skill-card-name">AWS</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="70"></div></div></div>
+        <div class="skill-card"><div class="skill-card-name">GitHub Actions (CI/CD)</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="76"></div></div></div>
+        <div class="skill-card"><div class="skill-card-name">ELK Stack</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="65"></div></div></div>
+        <div class="skill-card"><div class="skill-card-name">Linux / Bash</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="60"></div></div></div>
+      </div>
 
-    <script>
-        let skillHintShown = false;
+      <div class="skills-panel" id="tab-ai">
+        <div class="skill-card"><div class="skill-card-name">LLM API Integration</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="78"></div></div></div>
+        <div class="skill-card"><div class="skill-card-name">Prompt Engineering</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="75"></div></div></div>
+        <div class="skill-card"><div class="skill-card-name">Generative AI Concepts</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="70"></div></div></div>
+        <div class="skill-card"><div class="skill-card-name">Vertex AI</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="65"></div></div></div>
+      </div>
 
-        window.addEventListener("scroll", function () {
-            if (skillHintShown) return;
+      <div class="skills-panel" id="tab-tools">
+        <div class="skill-card"><div class="skill-card-name">Git / GitHub</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="88"></div></div></div>
+        <div class="skill-card"><div class="skill-card-name">JUnit / Mockito</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="75"></div></div></div>
+        <div class="skill-card"><div class="skill-card-name">Postman</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="85"></div></div></div>
+        <div class="skill-card"><div class="skill-card-name">Maven</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="80"></div></div></div>
+        <div class="skill-card"><div class="skill-card-name">Eureka / Zuul</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="74"></div></div></div>
+        <div class="skill-card"><div class="skill-card-name">WebSockets</div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="68"></div></div></div>
+      </div>
+    </section>
 
-            const skillsSection = document.querySelector(".skills");
-            const hint = document.getElementById("skillHint");
+    <!-- ── EXPERIENCE ── -->
+    <section id="experience" class="section reveal">
+      <div class="section-tag">03 — Experience</div>
+      <h2 class="section-title">Career &amp; Training</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="tl-period">Jan 2026 – Jun 2026</div>
+          <div class="tl-role">Java Full Stack Developer — Training</div>
+          <div class="tl-org">Capgemini · Bengaluru, India</div>
+          <ul class="tl-points">
+            <li>Intensive programme covering Core Java, OOP, Collections Framework, Exception Handling, JDBC, and SQL.</li>
+            <li>Built web applications end-to-end using Spring Boot, Spring MVC, and RESTful API design principles.</li>
+            <li>Worked on MySQL database design, query optimisation, and backend integration.</li>
+            <li>Practiced Agile development workflows, Git version control, and Maven build tooling on assigned projects.</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:var(--purple)"></div>
+          <div class="tl-period">Apr 2024 – May 2024</div>
+          <div class="tl-role">Software Development Intern</div>
+          <div class="tl-org">Softmusk Info Pvt Ltd · Remote</div>
+          <ul class="tl-points">
+            <li>Built responsive React-based user interfaces, improving component reusability and reducing render latency.</li>
+            <li>Optimised MongoDB schemas, reducing query time on high-read collections.</li>
+            <li>Supported deployment of backend services on AWS EC2 during development and QA cycles.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-            if (!skillsSection || !hint) return;
+    <!-- ── PROJECTS ── -->
+    <section id="projects" class="section reveal">
+      <div class="section-tag">04 — Projects</div>
+      <h2 class="section-title">What I've Built</h2>
+      <p class="section-sub">Production-style systems with real architecture decisions — not just CRUD apps.</p>
+      <div class="projects-grid">
 
-            const rect = skillsSection.getBoundingClientRect();
-            if (rect.top < window.innerHeight && rect.bottom > 0) {
-                skillHintShown = true;
-                hint.style.display = "block";
-                hint.style.opacity = "1";
+        <div class="project-card tilt featured" style="grid-column: 1 / -1;">
+          <div class="project-header">
+            <div>
+              <div class="project-badge">Featured Project</div>
+              <div class="project-icon" style="margin-top:.6rem; background:rgba(0,212,255,.1); border-color:rgba(0,212,255,.25);">🔨</div>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/poornachandra35/Auction-Service" target="_blank" class="project-link" title="GitHub">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-title" style="font-size:1.15rem;">Online Auction Platform</div>
+          <div class="project-desc">A fully distributed auction system with 7+ Spring Boot microservices, event-driven payment processing via Kafka, and an embedded AI assistant. Covers the full development lifecycle from API design to containerised deployment on Kubernetes.</div>
+          <ul class="project-highlights">
+            <li>35+ REST APIs across loosely coupled services; unit-tested with JUnit and Mockito.</li>
+            <li>Apache Kafka powering asynchronous payment and notification pipelines.</li>
+            <li>LLM API (OpenAI / Claude) integrated as an AI assistant with custom prompt engineering.</li>
+            <li>Centralised logging via ELK Stack; CI/CD via GitHub Actions; orchestrated with Kubernetes.</li>
+            <li>Performance tuned with DB indexing, server-side pagination, and caching.</li>
+          </ul>
+          <div class="project-tags">
+            <span class="project-tag">Java</span>
+            <span class="project-tag">Spring Boot</span>
+            <span class="project-tag">Apache Kafka</span>
+            <span class="project-tag">Docker</span>
+            <span class="project-tag">Kubernetes</span>
+            <span class="project-tag">Eureka</span>
+            <span class="project-tag">ELK Stack</span>
+            <span class="project-tag">MySQL</span>
+            <span class="project-tag">React</span>
+            <span class="project-tag">OpenAI API</span>
+          </div>
+        </div>
 
-                setTimeout(() => {
-                    hint.style.opacity = "0";
-                    setTimeout(() => hint.style.display = "none", 400);
-                }, 5000);
-            }
-        });
-    </script>
+        <div class="project-card tilt">
+          <div class="project-header">
+            <div class="project-icon">⚙️</div>
+            <div class="project-links">
+              <a href="https://github.com/poornachandra35/Advanced-Algorithmic-Optimization-Toolkit" target="_blank" class="project-link" title="GitHub">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-title">Advanced Algorithmic Optimisation Toolkit</div>
+          <div class="project-desc">Research-grade implementations of graph colouring and Sudoku solvers, exposed via FastAPI REST endpoints and visualised interactively in React.</div>
+          <ul class="project-highlights">
+            <li>Graph Colouring using backtracking for resource allocation and conflict resolution.</li>
+            <li>Sudoku solver with optimised pruning using NumPy and Pydantic for validation.</li>
+          </ul>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">FastAPI</span>
+            <span class="project-tag">React.js</span>
+            <span class="project-tag">NumPy</span>
+            <span class="project-tag">Pydantic</span>
+          </div>
+        </div>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/slick/slick.min.js"></script>
-    <script src="lib/typed/typed.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
-    <script>
-function toggleDetails(id) {
-    const details = document.getElementById(id);
+      </div>
+    </section>
 
-    if (!details) return;
+    <!-- ── EDUCATION ── -->
+    <section id="education" class="section reveal">
+      <div class="section-tag">05 — Education</div>
+      <h2 class="section-title">Academic Background</h2>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <div class="edu-degree">Master of Computer Applications</div>
+          <div class="edu-inst">Presidency College · Affiliated to BCU, Bengaluru</div>
+          <div class="edu-meta">
+            <span class="edu-cgpa">CGPA 8.67</span>
+            <span class="edu-year">2024 – 2026</span>
+          </div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-degree">Bachelor of Computer Applications</div>
+          <div class="edu-inst">Basaveshwar Science College · Rani Channamma University, Belagavi</div>
+          <div class="edu-meta">
+            <span class="edu-cgpa">CGPA 8.58</span>
+            <span class="edu-year">2021 – 2024</span>
+          </div>
+        </div>
+      </div>
+      <div class="competitive-row">
+        <div class="competitive-icon">🏆</div>
+        <div class="competitive-text">
+          <div class="main">1st Place — Inter-College Coding Hackathon · Presidency College, 2025</div>
+          <div class="sub">LeetCode · 300+ problems solved · Arrays, Trees, Dynamic Programming, Graph Traversal</div>
+        </div>
+      </div>
+    </section>
 
-    const isOpen = details.style.display === "block";
+    <!-- ── CONTACT ── -->
+    <section id="contact" class="section reveal">
+      <div class="section-tag">06 — Contact</div>
+      <h2 class="section-title">Let's Connect</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div>
+              <div class="contact-label">Email</div>
+              <div class="contact-value">poornachandra.biz@gmail.com</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📱</div>
+            <div>
+              <div class="contact-label">Phone</div>
+              <div class="contact-value">+91 76769 71410</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">💼</div>
+            <div>
+              <div class="contact-label">LinkedIn</div>
+              <div class="contact-value">linkedin.com/in/poornachandra35</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🐙</div>
+            <div>
+              <div class="contact-label">GitHub</div>
+              <div class="contact-value">github.com/poornachandra35</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-label">Location</div>
+              <div class="contact-value">Bengaluru, Karnataka, India</div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-cta">
+          <div>
+            <div class="contact-cta-title">Open to <span>full-time roles</span> &amp; exciting projects.</div>
+            <p class="contact-cta-desc" style="margin-top:.75rem;">Whether you have a backend role, an internship, or an interesting system to build — I'd love to hear about it. I respond within 24 hours.</p>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:.75rem;">
+            <a href="mailto:poornachandra.biz@gmail.com" class="btn-primary" style="justify-content:center;">Send Email ↗</a>
+            <a href="https://www.linkedin.com/in/poornachandra35" target="_blank" class="btn-outline" style="justify-content:center;">Connect on LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    // Close all skill details first (accordion behavior)
-    document.querySelectorAll('.skill-details').forEach(item => {
-        item.style.display = "none";
-    });
+  </div><!-- /main -->
+</div><!-- /site-wrapper -->
 
-    // Toggle selected one
-    details.style.display = isOpen ? "none" : "block";
+<footer>
+  <span>© 2026 Poornachandra S K</span>
+  <span>Built with <span class="heart">♥</span> &amp; clean code</span>
+</footer>
+
+<script>
+/* ── PARTICLE CANVAS ─────────────────────────────────── */
+(function() {
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [], animId;
+  const N = 60;
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function rand(a, b) { return Math.random() * (b - a) + a; }
+
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x = rand(0, W);
+      this.y = rand(0, H);
+      this.r = rand(.5, 2);
+      this.vx = rand(-.15, .15);
+      this.vy = rand(-.3, -.05);
+      this.alpha = rand(.1, .4);
+      this.cyan = Math.random() > .5;
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.y < -5 || this.x < -5 || this.x > W + 5) this.reset();
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = this.cyan
+        ? `rgba(0,212,255,${this.alpha})`
+        : `rgba(124,58,237,${this.alpha})`;
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < N; i++) particles.push(new Particle());
+
+  // draw subtle grid
+  function drawGrid() {
+    const step = 60;
+    ctx.strokeStyle = 'rgba(255,255,255,0.025)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (let x = 0; x < W; x += step) { ctx.moveTo(x, 0); ctx.lineTo(x, H); }
+    for (let y = 0; y < H; y += step) { ctx.moveTo(0, y); ctx.lineTo(W, y); }
+    ctx.stroke();
+  }
+
+  
+const nodes=[...Array(35)].map(()=>({x:Math.random()*W,y:H*0.65+Math.random()*H*0.3,v:(Math.random()-.5)*0.4}));
+function drawMesh(){
+ for(const n of nodes){n.x+=n.v;if(n.x<0||n.x>W)n.v*=-1;}
+ for(let i=0;i<nodes.length;i++){
+   for(let j=i+1;j<nodes.length;j++){
+      const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y;
+      const d=Math.hypot(dx,dy);
+      if(d<140){
+        ctx.strokeStyle=`rgba(0,212,255,${0.08*(1-d/140)})`;
+        ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.stroke();
+      }
+   }
+ }
 }
+function loop() {
+    ctx.clearRect(0, 0, W, H);
+    drawGrid();
+    drawMesh(); particles.forEach(p => { p.update(); p.draw(); });
+    animId = requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+/* ── TYPEWRITER ──────────────────────────────────────── */
+(function() {
+  const titles = [
+    'Java Backend Engineer',
+    'Spring Boot Developer',
+    'Kafka · Docker · Kubernetes',
+    'Cloud-Native Developer',
+    'LeetCode 300+ Solver',
+  ];
+  const el = document.getElementById('typed-text');
+  let ti = 0, ci = 0, deleting = false;
+  function tick() {
+    const t = titles[ti];
+    if (!deleting) {
+      el.textContent = t.slice(0, ++ci);
+      if (ci === t.length) { deleting = true; setTimeout(tick, 1800); return; }
+    } else {
+      el.textContent = t.slice(0, --ci);
+      if (ci === 0) { deleting = false; ti = (ti + 1) % titles.length; setTimeout(tick, 400); return; }
+    }
+    setTimeout(tick, deleting ? 40 : 65);
+  }
+  setTimeout(tick, 1000);
+})();
+
+/* ── SKILLS TABS ─────────────────────────────────────── */
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.skills-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    animateBars(document.getElementById('tab-' + btn.dataset.tab));
+  });
+});
+
+function animateBars(panel) {
+  panel.querySelectorAll('.skill-bar-fill').forEach(bar => {
+    const w = bar.dataset.w;
+    bar.style.width = '0';
+    requestAnimationFrame(() => { bar.style.width = w + '%'; });
+  });
+}
+// init first tab
+animateBars(document.getElementById('tab-backend'));
+
+/* ── SCROLL REVEAL ───────────────────────────────────── */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+      // animate skill bars when skills section comes in
+      if (e.target.id === 'skills') animateBars(document.getElementById('tab-backend'));
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ── ACTIVE NAV ──────────────────────────────────────── */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 200) cur = s.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+  });
+}, { passive: true });
+
+/* ── HAMBURGER ───────────────────────────────────────── */
+const hamburger = document.getElementById('hamburger');
+const sidenav   = document.getElementById('sidenav');
+hamburger.addEventListener('click', () => sidenav.classList.toggle('open'));
+sidenav.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => sidenav.classList.remove('open'));
+});
+
+setTimeout(()=>{const l=document.getElementById('loader');if(l)l.style.display='none';},1800);
+
+document.getElementById('themeToggle').onclick=()=>{
+ document.body.classList.toggle('light');
+ localStorage.setItem('theme',document.body.classList.contains('light')?'light':'dark');
+};
+if(localStorage.getItem('theme')==='light')document.body.classList.add('light');
+
+document.querySelectorAll('.tilt').forEach(card=>{
+ card.addEventListener('mousemove',e=>{
+   const r=card.getBoundingClientRect();
+   const x=e.clientX-r.left,y=e.clientY-r.top;
+   const rx=-(y-r.height/2)/12, ry=(x-r.width/2)/12;
+   card.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg) translateY(-5px)`;
+ });
+ card.addEventListener('mouseleave',()=>card.style.transform='');
+ card.addEventListener('click',()=>{
+   document.getElementById('projectModal').style.display='flex';
+ });
+});
+
+const io=new IntersectionObserver(es=>{
+ es.forEach((e,i)=>{
+  if(e.isIntersecting){
+    e.target.animate([{opacity:0,transform:'translateY(40px)'},{opacity:1,transform:'translateY(0)'}],{duration:700,delay:i*100,fill:'forwards'});
+  }
+ });
+},{threshold:.1});
+document.querySelectorAll('.section,.project-card,.skill-card').forEach(el=>io.observe(el));
+
 </script>
 
+<div id="neonCursor"></div>
 
 
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-    <script>
-        // Show alert only if screen width is less than or equal to 768px (typical for mobile)
-        if (window.innerWidth <= 768) {
-            alert("📢 For the best experience, please view this site on a desktop or switch to desktop site mode in your browser.");
-        }
-    </script>
+<script>
+// Neon cursor
+const c=document.getElementById('neonCursor');
+document.addEventListener('mousemove',e=>{
+ c.style.left=(e.clientX-9)+'px';
+ c.style.top=(e.clientY-9)+'px';
+});
+
+
+// Advanced Three.js Particle Network
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
+const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
+renderer.setSize(window.innerWidth,window.innerHeight);
+renderer.domElement.id='three-bg';
+document.body.prepend(renderer.domElement);
+
+const count=1200;
+const positions=new Float32Array(count*3);
+for(let i=0;i<count*3;i++){positions[i]=(Math.random()-0.5)*180;}
+const geometry=new THREE.BufferGeometry();
+geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));
+
+const material=new THREE.PointsMaterial({
+ size:0.35,
+ color:0x00d4ff,
+ transparent:true,
+ opacity:0.9
+});
+const particles=new THREE.Points(geometry,material);
+scene.add(particles);
+
+camera.position.z=60;
+
+function animate3d(){
+ requestAnimationFrame(animate3d);
+ particles.rotation.y += 0.0008;
+ particles.rotation.x += 0.0003;
+ renderer.render(scene,camera);
+}
+animate3d();
+
+window.addEventListener('resize',()=>{
+ camera.aspect=window.innerWidth/window.innerHeight;
+ camera.updateProjectionMatrix();
+ renderer.setSize(window.innerWidth,window.innerHeight);
+});
+
+
+// Fake GitHub stats
+const git=document.createElement('div');
+git.className='github-card';
+git.innerHTML='<h3>GitHub Stats</h3><p>Repositories: 25+ | Contributions: Growing</p>';
+document.getElementById('about')?.appendChild(git);
+
+// Fake LeetCode stats
+const lc=document.createElement('div');
+lc.className='leetcode-card';
+lc.innerHTML='<h3>LeetCode</h3><p>300+ Problems Solved</p>';
+document.getElementById('skills')?.appendChild(lc);
+
+// Resume Viewer
+const rv=document.createElement('div');
+rv.className='resume-viewer';
+rv.innerHTML='<h3>Resume Viewer</h3><iframe src="resume.pdf" width="100%" height="500"></iframe>';
+document.getElementById('contact')?.appendChild(rv);
+
+// PWA manifest
+const link=document.createElement("link");
+link.rel="manifest";
+link.href="manifest.json";
+document.head.appendChild(link);
+</script>
 
 </body>
-
 </html>
